@@ -5,8 +5,8 @@ const { csRouter } = require("./routes");
 const { initDB } = require("./utils/db");
 
 const app = express();
-const port = 8080;
 
+require("dotenv").config();
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,6 +18,8 @@ app.use(
 app.use("/cs", csRouter);
 
 initDB();
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.listen(process.env.SERVER_PORT, () => {
+  console.log(
+    `Server is running at http://localhost:${process.env.SERVER_PORT}`
+  );
 });
