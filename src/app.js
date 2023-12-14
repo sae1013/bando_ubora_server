@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
-    origin: "localhost",
+    origin: '*',
   })
 );
 app.use("/cs", csRouter);
