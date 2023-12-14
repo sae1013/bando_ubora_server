@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
 const initDB = () => {
-  mongoose.connect(`${process.env.DB_URL}/${process.env.dbName}`);
+  mongoose.connect(`${process.env.DB_URL}/${process.env.dbName}`, {
+    writeConcern: { w: "majority" },
+  });
   mongoose.connection.on("connected", () => {
-    console.log(`Mongoose default connection open to ${process.env.DB_URL}`);
+    console.log(`Mongoose default connection open`);
   });
 
   mongoose.connection.on("error", (err) => {

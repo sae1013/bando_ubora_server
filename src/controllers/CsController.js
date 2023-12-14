@@ -9,9 +9,9 @@ const csController = {
     res.status(201).json(savedPost);
     await writeToSheet({ author, phoneNumber, description });
   },
-
+  
   getForm: (req, res) => {
-    // will implement in the future.
+    res.json('success')
   },
 };
 
