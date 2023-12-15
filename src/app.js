@@ -18,8 +18,8 @@ app.use(
 app.use("/cs", csRouter);
 
 initDB();
-app.listen(process.env.SERVER_PORT, () => {
+app.listen(process.env.SERVER_PORT || 3000, () => {
   console.log(
-    `Server is running at http://localhost:${process.env.SERVER_PORT}`
+    `Server is running`
   );
 });
