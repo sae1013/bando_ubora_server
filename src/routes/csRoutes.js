@@ -2,7 +2,7 @@ const express = require("express");
 const csController = require("../controllers/CsController");
 const router = express.Router();
 
-router.get("/read", csController.getForm);
-router.post("/healthcheck", csController.healthcheck);
+router.get("/healthcheck", csController.healthcheck);
+router.post("/register", csController.registerForm);
 
 module.exports = router;
