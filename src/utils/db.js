@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const initDB = () => {
-  mongoose.connect(`${process.env.DB_URL}/${process.env.dbName}`, {
+  mongoose.connect(`${process.env.DB_URL}`, {
     writeConcern: { w: "majority" },
   });
   mongoose.connection.on("connected", () => {
