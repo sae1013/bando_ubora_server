@@ -1,16 +1,19 @@
 const mongoose = require("mongoose");
 
-const initDB = () => {
-  mongoose.connect(`${process.env.DB_URL}`, {
-    writeConcern: { w: "majority" },
-  });
-  mongoose.connection.on("connected", () => {
-    console.log(`Mongoose default connection open`);
-  });
-
-  mongoose.connection.on("error", (err) => {
-    console.log(`Mongoose default connection error: ${err}`);
-  });
+const initDB = async () => {
+  try {
+    const { connections } = await mongoose.connect(`${process.env.DB_URL}`, {
+      writeConcern: { w: "majority" },
+    });
+    if (connections[0].readyState === 1) {
+      console.log("연결성공");
+    } else {
+      console.log("연결실패");
+    }
+  } catch (err) {
+    console.log("연결실패");
+    console.log(err);
+  }
 };
 
 module.exports = {
